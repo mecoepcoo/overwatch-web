@@ -6,21 +6,27 @@
   <title>test</title>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <!-- <script src="../dist/index.js"></script> -->
-  <link rel="stylesheet" href="dsad.css">
-</head>
-<body>
+  <!-- <link rel="stylesheet" href="dsad.css"> -->
   <script type="module">
     import { initConfig, initOverwatch } from '../dist/index.js'
 
-    initOverwatch({})
+    initOverwatch({
+      reportUrl: 'http://www.baidu.com'
+    })
   </script>
+</head>
+<body>
+  
   <div class="section">
     <!-- <h1>资源加载错误</h1> -->
-    <img src="not-found" alt="">
+    <img src="/not-found.jpg" alt="">
   <!-- <link rel="stylesheet" href="dsad.css"> -->
   </div>
   <script type="module">
     var a = 1
+    var img = new Image()
+    img.src = 'fawfaf.jpg'
+    document.body.append(img)
 
     // $.ajax({
     //   url: 'http://yapi.demo.qunar.com/mock/89896/test503',

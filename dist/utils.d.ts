@@ -3,7 +3,7 @@ import { UncaughtErrorInfo, HttpErrorInfo, ResourceErrorInfo, CustomErrorInfo, R
  * 获取XPath
  * @param element html元素
  */
-export declare function getXPath(element: HTMLElement): string;
+export declare function getXPath(element: any): string;
 export declare function generateUUID(): string;
 declare type OriErrorInfo = UncaughtErrorInfo | HttpErrorInfo | ResourceErrorInfo | CustomErrorInfo;
 /**

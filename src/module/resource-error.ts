@@ -3,8 +3,8 @@ import { getXPath, wrapErrorInfo } from '../utils'
 
 export const recordResourceErrorLog = (): void => {
   window.addEventListener('error', (e) => {
-    console.dir(e.target)
     const target = e.target || e.srcElement
+    console.log(e)
     if (!target) return
     const isElementTarget = target instanceof HTMLScriptElement || target instanceof HTMLLinkElement || target instanceof HTMLImageElement
     if (!isElementTarget) return

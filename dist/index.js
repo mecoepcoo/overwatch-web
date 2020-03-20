@@ -41,14 +41,13 @@ function getXPath(element) {
     if (element == document.body) { //递归到body处，结束递归
         return '/html/' + element.tagName.toLowerCase();
     }
-    var ix = 1, //在nodelist中的位置，且每次点击初始化
-    siblings = element.parentNode && element.parentNode.childNodes || []; //同级的子元素
+    var ix = 1; //在nodelist中的位置，且每次点击初始化
+    var siblings = element.parentNode && element.parentNode.childNodes || []; //同级的子元素
     for (var i = 0, l = siblings.length; i < l; i++) {
         var sibling = siblings[i];
         //如果这个元素是siblings数组中的元素，则执行递归操作
         if (sibling == element) {
-            // TODO: 严格模式不能用callee，要改
-            return arguments.callee(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix) + ']';
+            return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix) + ']';
             //如果不符合，判断是否是element元素，并且是否是相同元素，如果是相同的就开始累加
         }
         else if (sibling.nodeType == 1 && sibling.tagName == element.tagName) {
@@ -225,8 +224,8 @@ var recordHttpLog = function () {
 
 var recordResourceErrorLog = function () {
     window.addEventListener('error', function (e) {
-        console.dir(e.target);
         var target = e.target || e.srcElement;
+        console.log(e);
         if (!target)
             return;
         var isElementTarget = target instanceof HTMLScriptElement || target instanceof HTMLLinkElement || target instanceof HTMLImageElement;
